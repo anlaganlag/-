@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}blog titles{% endblock %}
+{% block content %}
+<div class="row text-center vertical-middle-sm">
+    <h1>My Deadth Stranding</h1> 
+</div>
+<div class="row">
+    <div class="col-xs-12 col-md-8"> 
+    <ul>
+    {% for blog in blogs %}
+        <li><a href="{{ blog.id }}">{{ blog.title }}</a></li> 
+    {% endfor %}
+    </ul>
+    </div>
+    <div class="col-xs-6 col-md-4">
+    <h2>Con_Virus & Extinction</h2>
+    <p>   www.DEAD.com</p>
+    <img width="318px" src="https://www.3dmgame.com/uploads/allimg/160616/317-160616143428.jpg"> 
+    </div>
+</div>
+{% endblock %}
