@@ -8,32 +8,33 @@
         </div>
         <div>
             <ul class="nav navbar-nav" role="navigation">
-                <li><a href="{% url 'blog:blog_title' %}">Dead Stranding</a></li>
+                <li><a href="{% url 'blog:blog_title' %}">Dead Stranding >>BLOG 主頁</a></li>
             </ul> 
 
-                        {% comment %}
             <ul class="nav navbar-nav navbar-right" style="margin-right:10px">
            {% if user.is_authenticated %} 
            <li>
            <div class="dropdown" style="margin-top:8px">
                         <button class='btn btn-default dropdown-toggle' type='button' id='dropdownMenu' data-toggle='dropdown'>{{ user.username }}
                             <span class='caret'></span> 
+
                         </button>
+{% comment %}
                         <ul class="dropdown-menu">
                             <li><a href="{% url 'account:password_change' %}">修改密码</a></li>
                             <li><a href="{% url 'account:my_information' %}">个人信息</a></li>
                         </ul.
 
+{% endcomment %}
            <li><a href='#'>{{ user.username.upper }}</a></li>
-           <li><a href="{% url 'account:user_logout' %}">LOGOUT</a></li>
+           <li><a href="{% url 'account:user_logout' %}">退出</a></li>
            {% else %}
-            <li><a href="{% url 'account:user_login' %}">Extinctionning</a></li> 
+            <li><a href="{% url 'account:user_login' %}">登錄</a></li> 
             {% endif %}
             </ul>
         </div>
     </nav>
 </div>
-                        {% endcomment %}
 {% comment %}
                 <li><a href="{% url 'home' %}">HOME</a></li>
                 <li><a href="{% url 'blog:blog_title' %}">BLOG</a></li>
