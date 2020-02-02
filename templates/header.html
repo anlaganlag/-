@@ -2,26 +2,26 @@
 <div class="container">
     <nav class="navbar navbar-default" role="navigation"> 
         <div class="navbar-header">
-            <a class="navbar-brand" href="http://www.itdiffer.com"> 
+            <a class="navbar-brand" href="https://tzfile.com"> 
                 <img src="{% static '/images/logo.png' %}" height='34px' width="60px" alt='No Pic'>
             </a>
         </div>
         <div>
             <ul class="nav navbar-nav" role="navigation">
-                <li><a href="{% url 'blog:blog_title' %}">Dead Stranding >>BLOG 主頁</a></li>
+                <li><a href="{% url 'blog:blog_title' %}">>> BLOG主頁</a></li>
             </ul> 
 
             <ul class="nav navbar-nav navbar-right" style="margin-right:10px">
            {% if user.is_authenticated %} 
            <li>
            <div class="dropdown" style="margin-top:8px">
-                        <button class='btn btn-default dropdown-toggle' type='button' id='dropdownMenu' data-toggle='dropdown'>{{ user.username }}
+                        <button class='btn btn-default dropdown-toggle' type='button' id='dropdownMenu' data-toggle='dropdown'>{{ user.username.upper }}
                             <span class='caret'></span> 
 
                         </button>
-{% comment %}
                         <ul class="dropdown-menu">
                             <li><a href="{% url 'account:password_change' %}">修改密码</a></li>
+{% comment %}
                             <li><a href="{% url 'account:my_information' %}">个人信息</a></li>
                         </ul.
 
