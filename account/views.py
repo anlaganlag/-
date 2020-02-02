@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth  import authenticate,login
 from .forms import LoginForm,RegistrationForm,UserProfileForm,UserInfoForm,UserForm
@@ -40,8 +41,8 @@ def register(request):
             new_user = user_form.save(commit=False)
             new_user.set_password(user_form.cleaned_data['password'])
             new_user.save()
-            return HttpResponse("successfully")
-            #return HttpResponseRedirect(reverse("account:user_login"))
+            #return HttpResponse("successfully")
+            return HttpResponseRedirect(reverse("account:user_login"))
         else:
             return HttpResponse("sorry, your can not register.")
     else:

@@ -21,12 +21,9 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li><a href="{% url 'account:password_change' %}">修改密码</a></li>
-{% comment %}
                             <li><a href="{% url 'account:my_information' %}">个人信息</a></li>
                         </ul.
 
-{% endcomment %}
-           <li><a href='#'>{{ user.username.upper }}</a></li>
            <li><a href="{% url 'account:user_logout' %}">退出</a></li>
            {% else %}
             <li><a href="{% url 'account:user_login' %}">登錄</a></li> 
