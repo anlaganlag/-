@@ -126,3 +126,16 @@ STATICFILES_DIRS = ( os.path.join(BASE_DIR,'static'),)
 LOGIN_REDIRECT_URL = '/blog/'
 LOGIN_URL = '/account/login/'
 
+
+EMAIL_HOST = 'smtp.qq.com'
+EMAIL_HOST_USER ='tanjhu@qq.com'
+EMAIL_HOST_PASSWORD ='ycbirzjmbkorbfjh'
+EMAIL_PORT = 25
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'tanjhu@qq.com'
+
+
+
+
+
+
