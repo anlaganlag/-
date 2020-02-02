@@ -134,8 +134,4 @@ EMAIL_PORT = 25
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'tanjhu@qq.com'
 
-
-
-
-
-
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
