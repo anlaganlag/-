@@ -20,7 +20,7 @@ class UserInfo(models.Model):
     address = models.CharField(max_length=100, blank=True)
                                                #可以爲空的意思
     aboutme = models.TextField(blank=True)
-    #photo = models.ImageField(blank=True)
+    photo = models.ImageField(blank=True)
     def __str__(self):
         return "user:{}".format(self.user.username)
 

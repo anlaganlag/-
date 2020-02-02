@@ -8,6 +8,17 @@ from django.contrib.auth.decorators  import login_required
 from .models import UserProfile,UserInfo
 from django.contrib.auth.models  import User
 
+@login_required(login_url='/account/login/')
+def my_image(request):
+    if request.method =="POST":
+        img = request.POST ['img']
+        userinfo = UserInfo.objects.get(user=request.user.id)
+        userinfo.photo = img
+        userinfo.save()
+        return HttpResponse("1")
+    else:
+        return render(request,'account/imagecrop.html',)
+
 def user_login(request):
     if request.method == 'POST':
         login_form = LoginForm(request.POST)
