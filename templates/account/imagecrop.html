@@ -1,4 +1,7 @@
 {% load static %}
+<li><a href="{% url 'blog:blog_title' %}">>> 返回BLOG主頁</a>></li>
+<li><a href="{% url 'account:my_information' %}">>> 返回我的信息</a>></li>
+
 <link rel="stylesheet" href="{% static 'css/imagecrop.css' %}"> 
 <div class="container">
     <div class="imageBox">
@@ -7,7 +10,6 @@
     </div>
 
     <div class="action">
-        <!-- <input type="file" id="file" style=" width: 200px">-->
         <div class="new-contentarea tc"> <a href="javascript:void(0)" class="upload-img">
             <label for="upload-file">请先选择图片...</label>
             </a>
@@ -38,22 +40,15 @@ $(window).load(function() {
         reader.onload = function(e) {
             options.imgSrc = e.target.result;
             cropper = $('.imageBox').cropbox(options); 
-            //getImg();
         } 
         reader.readAsDataURL(this.files[0]); 
-        //this.files = [];
     })
     $('#btnCrop').on('click', function(){
-            alert("图片上传喽"); 
             $.ajax({
                 url: '{% url "account:my_image" %}', 
                 type: 'POST',
                 data: {"img": img},
                 success: function(e){
-                    location.href= "{% url 'account:my_information' %}" },
-                    });
-                    })
-                    {% comment %}
                     if(e == "1"){ 
                         parent.location.reload();
                     } else {
@@ -62,7 +57,6 @@ $(window).load(function() {
                 }
                 });
         })
-        {% endcomment %}
     
         function getImg(){
             img = cropper.getDataURL();
