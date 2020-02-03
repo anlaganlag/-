@@ -1,6 +1,7 @@
 {% load static %}
-<li><a href="{% url 'blog:blog_title' %}">>> 返回BLOG主頁</a>></li>
-<li><a href="{% url 'account:my_information' %}">>> 返回我的信息</a>></li>
+<li><a href="{% url 'blog:blog_title' %}">>> BLOG主頁</a>></li>
+<li><a href="{% url 'account:my_information' %}">>> 我的信息</a>></li>
+<h1> 請上傳圖像  </h1>
 
 <link rel="stylesheet" href="{% static 'css/imagecrop.css' %}"> 
 <div class="container">
@@ -49,12 +50,15 @@ $(window).load(function() {
                 type: 'POST',
                 data: {"img": img},
                 success: function(e){
+                    location.href = "{% url 'account:my_information' %}"
+                {% comment %}
                     if(e == "1"){ 
                         parent.location.reload();
                     } else {
                         alert("sorry, you are not lucky. the picutre can't been uploaded.")
-                    }
-                }
+
+                {% endcomment %}
+                    },
                 });
         })
     
