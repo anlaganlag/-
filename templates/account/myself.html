@@ -60,7 +60,7 @@
             {% endif %} 
         </div>
         <div style="margin-right:100px">
-            <button class="btn btn-primary btn-lg" id= "upload_image" onclick="upload_image_layer()">Upload my photo</button> </div>
+            <button class="btn btn-primary btn-lg" id= "upload_image" onclick="upload_image_layer()">upload my photo</button> </div>
 
         </div>
     </div>
@@ -69,16 +69,16 @@
 
 <script>
 function upload_image_layer(){
-        
         layer.open({
-        {% comment %}
         title:"上传头像",
         area: ['650px', '600px'],
-        type:1,
+        type:2,
+{% comment %}
+        content:'www.baidu.com'
+        content:"{% url 'account:my_image' %}",
+{% endcomment %}
         content:"{% url 'account:my_image' %}",
     });
-        {% endcomment %}
-        content:"<p>hello world</p>",});
 }
 </script>
 <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script> 
