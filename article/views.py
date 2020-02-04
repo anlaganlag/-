@@ -80,9 +80,10 @@ def article_post(request):
         #article_tags = request.user.tag.all()
         return render(request, "article/column/article_post.html",{"article_post_form":article_post_form, "article_columns":article_columns})
         #return render(request, "article/column/article_post.html",{"article_post_form":article_post_form, "article_columns":article_columns, "article_tags":article_tags})
-#
-#@login_required(login_url='/account/login') 
-#def article_list(request):
+
+
+@login_required(login_url='/account/login') 
+def article_list(request):
     #articles_list = ArticlePost.objects.filter(author=request.user)
     #paginator = Paginator(articles_list, 2)
     #page = request.GET.get('page')
@@ -95,6 +96,8 @@ def article_post(request):
     #except EmptyPage:
         #current_page = paginator.page(paginator.num_pages)
         #articles = current_page.object_list
+    articles = ArticlePost.objects.filter(author=request.user)
+    return render(request, "article/column/article_list.html",{"articles":articles})
     #return render(request, "article/column/article_list.html",{"articles":articles, "page": current_page})
 #
 #

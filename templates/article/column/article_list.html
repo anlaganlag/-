@@ -10,21 +10,29 @@
             <td>栏目</td>
             <td>操作</td> 
         </tr>
+{% comment %}
+            <td><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></td> 
+{% endcomment %}
         {% for article in articles %} 
         <tr id={{ article.id }}>
             <td>{{ forloop.counter }}</td>
-            <td><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></td> 
+            <td>{{ article.title }}</td>
             <td>{{ article.column }}</td>
+            <td>--</td>
+{% comment %}
             <td>
                 <a name="edit" href="{% url 'article:redit_article' article.id %}"><span class="glyphicon glyphicon-pencil"></span></a>
                 <a nane="delete" href="javascript:" onclick="del_article(this, {{ article.id }})"><span class="glyphicon glyphicon-trash" style="margin-left:20px;"></span></a>
             </td>
+{% endcomment %}
         </tr>
         {% endfor %} 
     </table>
+{% comment %}
     {% include "paginator.html" %}
+{% endcomment %}
 </div>
-
+{% comment %}
 <script type="text/javascript" src='{% static "js/jquery.js" %}'></script> 
 <script type="text/javascript" src="{% static 'js/layer.js'%}"></script> 
 <script type="text/javascript">
@@ -55,4 +63,5 @@
     } 
 </script>
 
+{% endcomment %}
 {% endblock %}
