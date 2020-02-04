@@ -1,11 +1,17 @@
 {% extends "article/base.html" %}
-{% load staticfiles %}
+{% load static %}
 {% block title %}articles list{% endblock %}
 {% block content %} 
 <div>
     <header>
         <h1>{{ article.title }}</h1> 
         <p>{{ user.username }}</p>
+        <div>
+            {{ article.body }}
+        </div>
+        </div>
+{% endblock %}
+{% comment %}
     </header>
     
     <link rel="stylesheet" href="{% static 'editor/css/editormd.preview.css' %}" /> 
@@ -37,3 +43,5 @@ $(function(){
 });
 </script>
 {% endblock %}
+
+{% endcomment %}

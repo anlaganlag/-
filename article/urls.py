@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path,re_path
 from . import views
 
 
@@ -10,6 +10,8 @@ urlpatterns = [
     path('del-column/',views.del_article_column,name='del_article_column'),
     path('article-post/',views.article_post,name='article_post'),
     path('article-list/',views.article_list,name='article_list'),
+    re_path('article-detail/(?P<id>\d+)/(?P<slug>[-\w]+)/$', views.article_detail, name="article_detail"),
+  
 
 ]
 

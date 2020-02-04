@@ -32,8 +32,8 @@ class ArticlePost(models.Model):
     #users_like = models.ManyToManyField(User, related_name="articles_like", blank=True)
     #article_tag = models.ManyToManyField(ArticleTag, related_name='article_tag', blank=True)
     class Meta:
-        #ordering = ("-updated",) 
-        ordering = ("title",) 
+        ordering = ("-updated",) 
+        #ordering = ("title",) 
         index_together = (('id', 'slug'),)
         
     def __str__(self): 
@@ -46,8 +46,8 @@ class ArticlePost(models.Model):
     def get_absolute_url(self):
         return reverse("article:article_detail", args=[self.id, self.slug])
 
-    #def get_url_path(self):
-        #return reverse("article:article_content", args=[self.id, self.slug])
+    def get_url_path(self):
+        return reverse("article:article_content", args=[self.id, self.slug])
 
 #
 #class Comment(models.Model):
