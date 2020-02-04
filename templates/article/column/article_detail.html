@@ -6,13 +6,8 @@
     <header>
         <h1>{{ article.title }}</h1> 
         <p>{{ user.username }}</p>
-        <div>
-            {{ article.body }}
-        </div>
-        </div>
-{% endblock %}
-{% comment %}
     </header>
+        <div>
     
     <link rel="stylesheet" href="{% static 'editor/css/editormd.preview.css' %}" /> 
     <div id='editormd-view'>
@@ -30,6 +25,7 @@
 <script src='{% static "editor/lib/flowchart.min.js" %}''></script> 
 <script src='{% static "editor/lib/jquery.flowchart.min.js" %}'></script> 
 <script src='{% static "editor/editormd.js" %}'></script>
+
 <script type="text/javascript"> 
 $(function(){
     editormd.markdownToHTML("editormd-view", {
@@ -44,4 +40,3 @@ $(function(){
 </script>
 {% endblock %}
 
-{% endcomment %}
