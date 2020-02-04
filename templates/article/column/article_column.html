@@ -14,8 +14,6 @@
         <tr>
             <td>{{ forloop.counter }}</td> 
             <td>{{ column.column }}</td> 
-            <td>--</td>
-{% comment %}
             <td>
                 <a name="edit" href="javascript:" onclick="edit_column(this, {{ column.id }})"> 
                     <span class="glyphicon glyphicon-pencil"></span>    
@@ -24,7 +22,6 @@
                     <span class="glyphicon glyphicon-trash" style="margin-left:20px;"></span> 
                 </a>    
             </td>
-{% endcomment %}
         </tr>
         {% empty %} 
         <p>还没有设置栏目，太懒了。</p> 
@@ -64,7 +61,6 @@
             }
         });
     }
-{% comment %}
     function edit_column(the, column_id){
         var name = $(the).parents("tr").children("td").eq(1).text(); 
         var index = layer.open({
@@ -92,7 +88,6 @@
             },
         }); 
     }
-
     function del_column(the, column_id){
         var name = $(the).parents("tr").children("td").eq(1).text(); 
         layer.open({
@@ -118,7 +113,6 @@
             },
         }); 
     }
-{% endcomment %}
 </script>
 
 {% endblock %}

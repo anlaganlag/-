@@ -1,12 +1,7 @@
 <div class="bg-info">
     <div class="text-center" style="margin-top: -10px;">
         <p><a href="{% url 'article:article_column'%}">栏目管理</a></p> 
-{% comment %}
         <p><a href="{% url 'article:article_post'%}">发布文章</a></p>
-        <p><a href="{% url 'article:article_list' %}">文章列表</a></p>
-        <p><a href="{% url 'article:article_tag' %}">文章标签</a></p>
-
-{% endcomment %}
     </div>    
 </div>    
 
@@ -24,4 +19,9 @@
     </div>
 </div>
 
+{% endcomment %}
+
+{% comment %}
+        <p><a href="{% url 'article:article_list' %}">文章列表</a></p>
+        <p><a href="{% url 'article:article_tag' %}">文章标签</a></p>
 {% endcomment %}
