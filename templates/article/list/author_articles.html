@@ -9,7 +9,7 @@
     <h1>腹式呼吸，放鬆，每日改進,進步一點點</h1> 
 </div>
 <div class="container"> 
-<div class="col-md-12">
+<div class="col-md-8">
     {% for article in articles %} 
     <div class="list-group">
         <a href="{{article.get_url_path}}" class="list-group-item active"> 
@@ -28,17 +28,17 @@
     {% if userinfo.photo %}
     <img src="{{ userinfo.photo | striptags }}" class="img-circle" id="my_photo" name="user_face" style="width: 300px"> 
     {% else %}
-    <img name="user_face" src="{% static 'images/newton.jpg' %}" class="img-circle" id="my_photo" style="width: 300px">
+    <img name="user_face" src="{% static 'images/newton.png' %}" class="img-circle" id="my_photo" style="width: 300px">
     {% endif %}
 </div>
 <div>
-    <p>{{ user.username }}</p>
+    <p>用戶名:{{ user.username }}</p>
 {% comment %}
     <p>共发表文章{% author_total_articles user %}篇</p>
 {% endcomment %}
 {% if userinfo %}
-    <p>{{ userinfo.company }}</p>
-    <p>{{ userinfo.aboutme }}</p>
+    <p>公司:{{ userinfo.company }}</p>
+    <p>個人簡介:{{ userinfo.aboutme }}</p>
 {% else %} 
     <p>这个作者太懒了，什么也没有留下。</p> 
 {% endif %}
