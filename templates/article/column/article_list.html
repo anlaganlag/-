@@ -16,8 +16,9 @@
             <td><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></td> 
             <td>{{ article.column }}</td>
             <td>
-<a nane="delete" href="javascript:" onclick="del_article(this, {{ article.id }})"><span class="glyphicon glyphicon-trash" style="margin-left:20px;"></span></a>
-<a name="edit" href="{% url 'article:redit_article' article.id %}"><span class="glyphicon glyphicon-pencil"></span></a>
+                <a nane="delete" href="javascript:" onclick="del_article(this, {{ article.id }})"><span class="glyphicon glyphicon-trash" style="margin-left:20px;"></span></a>
+                
+            <a name="edit" href="{% url 'article:redit_article' article.id %}"><span class="glyphicon glyphicon-pencil"></span></a>
             </td>
         </tr>
         {% endfor %} 
@@ -34,6 +35,9 @@
             skin: "layui-layer-rim",
             area: ["400px", "200px"],    
             title: "删除文章",
+            offset: "auto",
+            time: 5000,
+            maxmin:true,
             content: '<div class="text-center" style="margin-top:20px"><p>是否确定删除《'+article_name+'》</p> </div>',
             btn:['确定', '取消'], yes: function(){
                 $.ajax({
@@ -52,6 +56,7 @@
             }, 
         });
     } 
+    layer.full(article_name)
 </script>
 
 {% endblock %}
