@@ -3,12 +3,14 @@
     <nav class="navbar navbar-default" role="navigation"> 
         <div class="navbar-header">
             <a class="navbar-brand" href="https://tzfile.com"> 
-                <img src="{% static '/images/logo.png' %}" height='10px' width="100px" alt='No Pic'>
+                <img src="{% static '/images/logo.png' %}" height='30px' width="80px" alt='No Pic'>
             </a>
         </div>
         <div>
             <ul class="nav navbar-nav" role="navigation">
-                <li><a href="{% url 'blog:blog_title' %}">>> BLOG主頁</a></li>
+                <li><a href="{% url 'blog:blog_title' %}">Blog文章</a></li>
+                <li><a href="{% url 'article:article_titles' %}">專欄文章</a></li>
+                <li><a href="{% url 'account:user_register' %}">注冊</a></li>
             </ul> 
 
             <ul class="nav navbar-nav navbar-right" style="margin-right:10px">

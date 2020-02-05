@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Home page{% endblock %}
+
+{% block content %}
+<div class ='text-center'>
+    <h1>歡迎{{ user.username.upper }}光臨!</h1>
+    <h3>Life is short.Please waste no time!</h3>
+    <h2>And django can build great web apps!</h2>
+    {% load static %}
+    <img src="{% static 'images/book.png' %}"
+</div>
+{% endblock %}
+
+

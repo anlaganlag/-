@@ -1,13 +1,15 @@
 {% extends "base.html" %}
+{% comment %}
 {% load article_tags %}
-{% load staticfiles %}
+{% endcomment %}
+{% load static %}
 {% block title %}articles{% endblock %}
 {% block content %}
 <div class="row text-center vertical-middle-sm">
-    <h1>阅读，丰富头脑，善化行为</h1> 
+    <h1>腹式呼吸，放鬆，每日改進,進步一點點</h1> 
 </div>
 <div class="container"> 
-<div class="col-md-8">
+<div class="col-md-12">
     {% for article in articles %} 
     <div class="list-group">
         <a href="{{article.get_url_path}}" class="list-group-item active"> 
@@ -31,7 +33,9 @@
 </div>
 <div>
     <p>{{ user.username }}</p>
+{% comment %}
     <p>共发表文章{% author_total_articles user %}篇</p>
+{% endcomment %}
 {% if userinfo %}
     <p>{{ userinfo.company }}</p>
     <p>{{ userinfo.aboutme }}</p>
