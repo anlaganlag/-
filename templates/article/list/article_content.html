@@ -27,6 +27,7 @@
 {{ article.body | markdown }}
 {% endcomment %}
 <div class="container">
+<div class="col-md-9">
     <header>
     
         <h1>{{ article.title }}</h1> 
@@ -100,18 +101,19 @@
     </div>
 
 </div>
+{% endcomment %}
 <div class="col-md-3">
-    <p class="text-center"><h3>最受欢迎文章</h3></p> 
-    <ol>
-        {% for article_rank in most_viewed %} 
-        <li>
-            <a href="{{article_rank.get_url_path}}">{{ article_rank.title }}</a> 
-        </li>
-        {% endfor %} 
-    </ol>
-    
-    <hr>
-    <p class="text-center"><h3>最新文章</h3></p>
+<p class="text-center"><h3>Most Popular Articles</h3></p> 
+<ol>
+    {% for article_rank in most_viewed %} 
+    <li>
+        <a href="{{article_rank.get_url_path}}">{{ article_rank.title }} {{ article_rank.author }} </a> 
+    </li>
+    {% endfor %} 
+</ol>
+{% comment %}
+<hr>
+<p class="text-center"><h3>最新文章</h3></p>
     {% latest_articles 4 %}
 
     <hr>
@@ -133,10 +135,10 @@
     <p>Sorry, 没有相似文章</p>
     {% endfor %}
 
+{% endcomment %}
 </div>
 </div>
 
-{% endcomment %}
 <script src='{% static "js/jquery.js" %}'></script>
 <script src='{% static "editor/lib/marked.min.js" %}'></script>
 <script src='{% static "editor/lib/prettify.min.js" %}'></script> 
