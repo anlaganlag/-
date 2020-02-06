@@ -1,7 +1,5 @@
 {% extends "base.html" %}
-{% comment %}
 {% load article_tags %}
-{% endcomment %}
 {% load static %}
 {% block title %}articles{% endblock %}
 {% block content %}
@@ -33,9 +31,7 @@
 </div>
 <div>
     <p>用戶名:{{ user.username }}</p>
-{% comment %}
     <p>共发表文章{% author_total_articles user %}篇</p>
-{% endcomment %}
 {% if userinfo %}
     <p>公司:{{ userinfo.company }}</p>
     <p>個人簡介:{{ userinfo.aboutme }}</p>
