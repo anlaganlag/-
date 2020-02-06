@@ -1,5 +1,3 @@
-blank = True 
-#可以爲空
 
 from django.db import models
 from django.contrib.auth.models import User
@@ -18,7 +16,6 @@ class UserInfo(models.Model):
     company = models.CharField(max_length=100, blank=True)
     profession = models.CharField(max_length=100, blank=True)
     address = models.CharField(max_length=100, blank=True)
-                                               #可以爲空的意思
     aboutme = models.TextField(blank=True)
     photo = models.ImageField(blank=True)
     def __str__(self):

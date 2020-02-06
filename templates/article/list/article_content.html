@@ -1,6 +1,3 @@
-
-
-
 {% extends "base.html" %}
 
 {% load static %}
@@ -59,11 +56,7 @@
     <div>
         <p class="text-center"><strong>Readers for thumbs_up</strong></p>
         {% for user in article.users_like.all %}
-            {% if userinfo.photo %}
-            <img src="{{ userinfo.photo | striptags }}" class="img-circle" id="my_photo" name="user_face">
-            {% else %}
                 <p class="text-center">{{ user.username }}</p>
-            {% endif %}
         {% empty %}
         <p class="text-center">No comment yet~</p>
         {% endfor %}
