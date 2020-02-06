@@ -1,3 +1,7 @@
+
+import redis
+
+from django.conf import settings
 from django.http import HttpResponse
 from django.contrib.auth.models  import User 
 from django.shortcuts import render,get_object_or_404
@@ -8,6 +12,10 @@ from .models import ArticleColumn,ArticlePost
 from django.contrib.auth.decorators  import login_required 
 from django.views.decorators.csrf  import csrf_exempt 
 from django.views.decorators.http  import require_POST 
+
+
+
+r = redis.StrictRedis(host=settings.REDIS_HOST,port=settings.REDIS_PORT,db=settings.REDIS_DB)
 
 def article_titles(request,username=None):
     if username:
@@ -36,9 +44,11 @@ def article_titles(request,username=None):
         return render(request,'article/list/author_articles.html', {'articles':articles,'page':current_page,'userinfo':userinfo,'user':user})
     return render(request,'article/list/article_titles.html', {'articles':articles,'page':current_page})
 
+
 def article_detail(request,id,slug):
     article = get_object_or_404(ArticlePost,id=id,slug=slug)
-    return render (request,'article/list/article_content.html',{'article':article})
+    total_views = r.incr('article:{}:views'.format(article.id))
+    return render (request,'article/list/article_content.html',{'article':article,'total_views':total_views})
 
 @csrf_exempt
 @require_POST

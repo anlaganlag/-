@@ -107,7 +107,8 @@ def article_list(request):
 @login_required(login_url='/account/login') 
 def article_detail(request, id, slug):
     article = get_object_or_404(ArticlePost, id=id, slug=slug)
-    return render(request, "article/column/article_detail.html", {"article":article})
+    total_views = r.incr(f"article:{article.id}:views")
+    return render(request, "article/list/article_content.html", {"article":article,"total_views":total_views})
 
 
 @login_required(login_url='/account/login') 
