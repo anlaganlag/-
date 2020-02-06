@@ -63,8 +63,7 @@ def article_detail(request,id,slug):
             new_comment = comment_form.save(commit=False)
             new_comment.article = article
             new_comment.save()
-    else:
-        comment_form = CommentForm()
+    comment_form = CommentForm()
     return render (request,'article/list/article_content.html',{'article':article,'total_views':total_views,'most_viewed':most_viewed,'comment_form':comment_form}) 
 @csrf_exempt
 @require_POST

@@ -67,7 +67,7 @@
         <h3><span class="glyphicon glyphicon-bullhorn"></span>本文有{{ comments.count }}评论</h3>
         {% for comment in article.comments.all %}
     <div>
-        <p><strong>{{ comment.commentator }}</strong>说:</p>
+        <p><strong>{{ comment.commentator }}</strong> SAY:</p>
         <p style="margin-left:40px;">{{ comment.body }}</p> 
     </div>
     {% empty %} 

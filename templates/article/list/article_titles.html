@@ -1,14 +1,10 @@
 {% extends "base.html" %}
-{% comment %}
 {% load article_tags %}
-{% endcomment %}
 {% block title %} articles {% endblock %}
 {% block content %}
 <div class="row text-center vertical-middle-sm">
     <h1>呼吸，放鬆，安全!歡迎來到blog!</h1>
-{% comment %}
     <p>这里已经有{% total_articles %}篇文章供你阅读</p> 
-{% endcomment %}
 </div>
 <div class="container">
     {% for article in articles %} 
