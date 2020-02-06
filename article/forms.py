@@ -1,6 +1,6 @@
 from django import forms
 from .models import ArticleColumn, ArticlePost
-from .models import ArticleTag
+from .models import ArticleTag,Comment
 
 class ArticleColumnForm(forms.ModelForm): 
     class Meta:
@@ -12,11 +12,10 @@ class ArticlePostForm(forms.ModelForm):
         model = ArticlePost 
         fields = ("title", "body")
 
-#
-#class CommentForm(forms.ModelForm): 
-    #class Meta:
-        #model = Comment
-        #fields = ("commentator", "body",)
+class CommentForm(forms.ModelForm): 
+    class Meta:
+        model = Comment
+        fields = ("commentator", "body",)
 
 class ArticleTagForm(forms.ModelForm):
     class Meta:

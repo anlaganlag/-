@@ -1,4 +1,3 @@
-
 import redis
 
 from django.conf import settings
@@ -13,6 +12,9 @@ from django.contrib.auth.decorators  import login_required
 from django.views.decorators.csrf  import csrf_exempt 
 from django.views.decorators.http  import require_POST 
 
+
+from .models  import Comment 
+from .forms  import CommentForm
 
 
 r = redis.StrictRedis(host=settings.REDIS_HOST,port=settings.REDIS_PORT,db=settings.REDIS_DB)
@@ -55,8 +57,15 @@ def article_detail(request,id,slug):
     most_viewed = list(ArticlePost.objects.filter(id__in=article_ranking_ids))
     most_viewed.sort(key=lambda x: article_ranking_ids.index(x.id))
 
-    return render (request,'article/list/article_content.html',{'article':article,'total_views':total_views,'most_viewed':most_viewed})
-
+    if request.method == "POST":
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            new_comment = comment_form.save(commit=False)
+            new_comment.article = article
+            new_comment.save()
+    else:
+        comment_form = CommentForm()
+    return render (request,'article/list/article_content.html',{'article':article,'total_views':total_views,'most_viewed':most_viewed,'comment_form':comment_form}) 
 @csrf_exempt
 @require_POST
 @login_required(login_url='/account/login/')

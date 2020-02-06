@@ -1,3 +1,9 @@
+
+
+import redis
+
+from django.conf import settings
+
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 
 from django.shortcuts import render,get_object_or_404
@@ -9,6 +15,7 @@ from django.http import HttpResponse
 from .models import ArticleColumn,ArticlePost,ArticleTag
 from .forms import ArticleColumnForm, ArticlePostForm, ArticleTagForm
 
+r = redis.StrictRedis(host=settings.REDIS_HOST,port=settings.REDIS_PORT,db=settings.REDIS_DB)
 @login_required(login_url='/account/login/') 
 @csrf_exempt
 def article_column(request):
@@ -109,6 +116,7 @@ def article_detail(request, id, slug):
     article = get_object_or_404(ArticlePost, id=id, slug=slug)
     total_views = r.incr(f"article:{article.id}:views")
     return render(request, "article/list/article_content.html", {"article":article,"total_views":total_views})
+    #return render(request, "article/list/article_content.html", {"article":article,})
 
 
 @login_required(login_url='/account/login') 
