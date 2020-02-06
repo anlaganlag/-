@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 
 {% load static %}
-{% comment %}
 {% load article_tags %}
+
+{% comment %}
 {% with total_likes=article.users_like.count users_like=article.users_like.all %}
 <div class="col-md-9">
             <a href="{% url 'article:author_articles' article.author.username %}">{{ article.author.username }}</a>
@@ -111,12 +112,13 @@
     </li>
     {% endfor %} 
 </ol>
-{% comment %}
 <hr>
 <p class="text-center"><h3>最新文章</h3></p>
     {% latest_articles 4 %}
+</div>
 
     <hr>
+{% comment %}
     <p class="text-center"><h3>最多评论文章</h3></p>
     {% most_commented_articles as most_comments %} 
     <ul>
