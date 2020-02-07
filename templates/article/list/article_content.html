@@ -18,15 +18,15 @@
     </header>
     
 {% endcomment %}
+    <link rel="stylesheet" href="{% static 'editor/css/editormd.preview.css' %}" /> 
+    <div id='editormd-view'>
+    {{ article.body | markdown }}
 {% load static %}
 {% block title %}articles list{% endblock %}
 {% block content %} 
 
 {% with total_likes=article.users_like.count users_like=article.users_like.all %}
 
-{% comment %}
-{{ article.body | markdown }}
-{% endcomment %}
 <div class="container">
 <div class="col-md-9">
     <header>

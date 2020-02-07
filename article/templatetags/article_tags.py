@@ -2,6 +2,8 @@ from django import template
 register = template.Library()
 from article.models import ArticlePost
 from django.db.models import Count
+from django.utils.safestring import mark_safe
+import markdown
 
 
 @register.simple_tag
@@ -30,3 +32,6 @@ def most_commented_articles(n=3):
 #標注到artcles所對應ArticlesPosst對象上
 
 
+@register.filter(name='markdown')
+def markdown_filter(text):
+    return mark_safe(markdowm.markdowm(text))
