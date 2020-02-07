@@ -105,20 +105,19 @@
 </div>
 <div class="col-md-3">
 <p class="text-center"><h3>最受欢迎文章</h3></p> 
-<ol>
+<ul>
     {% for article_rank in most_viewed %} 
     <li>
-        <a href="{{article_rank.get_url_path}}">{{ article_rank.title }} by {{ article_rank.author  }} </a> 
+        <a href="{{article_rank.get_url_path}}">{{ article_rank.title }}</a> 
     </li>
     {% endfor %} 
-</ol>
-<hr>
-<p class="text-center"><h3>最新文章</h3></p>
-    {% latest_articles 4 %}
-</div>
+</ul>
 
     <hr>
-{% comment %}
+    <p class="text-center"><h3>最新文章</h3></p>
+        {% latest_articles 4 %}
+
+    <hr>
     <p class="text-center"><h3>最多评论文章</h3></p>
     {% most_commented_articles as most_comments %} 
     <ul>
@@ -129,6 +128,8 @@
         {% endfor %} 
     </ul>
 
+    </div>
+{% comment %}
     <hr>
     <p class="text-center"><h3>推荐相似文章</h3></p>
     {% for similar in similar_articles %}
