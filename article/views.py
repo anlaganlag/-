@@ -1,4 +1,5 @@
 import redis
+import json
 
 from django.conf import settings
 
@@ -71,11 +72,11 @@ def article_post(request):
                 new_article.author = request.user
                 new_article.column = request.user.article_column.get(id=request.POST['column_id'])
                 new_article.save()
-                #tags = request.POST['tags']
-                #if tags:
-                    #for atag in json.loads(tags):
-                        #tag = request.user.tag.get(tag=atag)
-                        #new_article.article_tag.add(tag)
+                tags = request.POST['tags']
+                if tags:
+                    for atag in json.loads(tags):
+                        tag = request.user.tag.get(tag=atag)
+                        new_article.article_tag.add(tag)
                 return HttpResponse("1") 
             except:
                 return HttpResponse("2") 
@@ -84,9 +85,9 @@ def article_post(request):
     else:
         article_post_form = ArticlePostForm()
         article_columns = request.user.article_column.all()
-        #article_tags = request.user.tag.all()
-        return render(request, "article/column/article_post.html",{"article_post_form":article_post_form, "article_columns":article_columns})
-        #return render(request, "article/column/article_post.html",{"article_post_form":article_post_form, "article_columns":article_columns, "article_tags":article_tags})
+        article_tags = request.user.tag.all()
+        #return render(request, "article/column/article_post.html",{"article_post_form":article_post_form, "article_columns":article_columns})
+        return render(request, "article/column/article_post.html",{"article_post_form":article_post_form, "article_columns":article_columns, "article_tags":article_tags})
 
 
 @login_required(login_url='/account/login') 

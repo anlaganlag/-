@@ -55,6 +55,8 @@
                 <span style="margin-left: 15px;" class="glyphicon glyphicon-thumbs-down">unlike</span>
             </a>
         </p>
+        <p> <span style='margin-right:10px'><strong>Tags:</strong></span>
+        {{ article.article_tag.all | join:', '}}</p>
     </div>
     <div>
         <p class="text-center"><strong>Readers for Thumbs_up:</strong></p>
